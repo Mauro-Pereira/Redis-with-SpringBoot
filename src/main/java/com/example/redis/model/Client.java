@@ -1,5 +1,7 @@
 package com.example.redis.model;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +17,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Client {
+public class Client implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

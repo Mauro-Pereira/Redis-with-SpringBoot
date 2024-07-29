@@ -18,12 +18,12 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    @Cacheable(value = "Client", key = "#id")
+    @CacheEvict(value = "Client", allEntries = true)
     public Client createClient(Client client){
 
         Optional<Client> returnedClient = this.clientRepository.findByEmail(client.getEmail());
         
-        if(returnedClient.isEmpty()){
+        if(returnedClient.isPresent()){
             System.out.println("I must to return a exception here after");
         }
 
@@ -55,7 +55,7 @@ public class ClientService {
         return updatedClient;
     }
 
-    @CacheEvict(value = "Client", key = "#id")
+    @CacheEvict(value = "Client", key = "#id", allEntries = true)
     public void removeClient(Long id){
         Optional<Client> returnedClient = this.clientRepository.findById(id);
 

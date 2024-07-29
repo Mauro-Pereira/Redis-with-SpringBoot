@@ -30,6 +30,9 @@ public class ClientController {
     @GetMapping("/listClient")
     public ResponseEntity<List<ResponseClientDTO>> returnAllClient(){
 
+        List<Client> clients = clientService.returnAllClient();
+        System.out.println("Number of clients: " + clients.size());
+
         return ResponseEntity
                 .ok()
                 .body(
@@ -44,6 +47,7 @@ public class ClientController {
     @PostMapping("/saveClient")
     public ResponseEntity<Client> createClient(@RequestBody SaveClientDTO saveClient){
         Client client = ClientMapper.convertSaveClientToEnty(saveClient);
+        System.out.println("Clients: " + client.toString());
         return ResponseEntity.ok().body(this.clientService.createClient(client));
     }
 
