@@ -24,7 +24,7 @@ public class ClientService {
         Optional<Client> returnedClient = this.clientRepository.findByEmail(client.getEmail());
         
         if(returnedClient.isPresent()){
-            System.out.println("I must to return a exception here after");
+            System.out.println("I must to return an exception here after");
         }
 
         return this.clientRepository.save(client);
@@ -41,7 +41,7 @@ public class ClientService {
         Optional<Client> returnedClient = this.clientRepository.findById(id);
 
         if(returnedClient.isEmpty()){
-            System.out.println("I must to return a exception here after");
+            System.out.println("I must to return an exception here after");
         }
 
         Client updatedClient = returnedClient.get(); 
@@ -60,7 +60,7 @@ public class ClientService {
         Optional<Client> returnedClient = this.clientRepository.findById(id);
 
         if(returnedClient.isEmpty()){
-            System.out.println("I must to return a exception here after");
+            System.out.println("I must to return an exception here after");
         }
 
         this.clientRepository.deleteById(id);
